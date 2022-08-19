@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <h2>Registration Form</h2>
+  <form [formGroup]="regForm">
+    <div class="form-group">
+      <label for="">Username</label>
+      <input formControlName="user" type="text" class="form-control">
+      <span style="color: red;" *ngIf="userName && userName.invalid && userName.touched">This is not valid</span>
+    </div>
+    <div class="form-group">
+      <label for="">password</label>
+      <input formControlName="password" type="password" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="">Confirm Password</label>
+      <input formControlName="confirmPassword" type="password" class="form-control">
+    </div>
+
+    <button class="btn btn-primary">Submit</button>
+  </form>
+  {{regForm.value|json}}
+</div>

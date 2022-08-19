@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+
+    {{userForm.value |json}}
+<hr>
+{{userModel |json}}
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" class="form-control" #nameRef="ngModel" name="username" [(ngModel)]="userModel.name" required>
+    </div>
+    <!-- {{nameRef.className}} -->
+    <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
+      please enter a valid name
+    </div>
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="userModel.email">
+    </div>
+
+    <div class="form-group">
+      <label for="">Phone</label>
+      <input type="tel" class="form-control" name="mobile" [(ngModel)]="userModel.phone">
+    </div>
+
+    <div class="form-group">
+      <select class="form-control mt-3" name="topicc" [(ngModel)]="userModel.topic">
+        <option value="">I'm Intrsested in</option>
+        <option *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="">Time Preference</label>
+      <div class="form-check" >
+        <input class="form-check-label" type="radio" name="timepreference" id="" value="Morning" [(ngModel)]="userModel.timepreference">
+        <label for="" class="form-check-label">Morning (9AM to 12PM</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-label" type="radio" name="timepreference" id="" value="evening" [(ngModel)]="userModel.timepreference">
+        <label for="" class="form-check-label">Evening (5PM to 8PM</label>
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="promotion" [(ngModel)]="userModel.promotion">
+      <label for="" class="form-check-label">Send Me Promotional offers</label>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
